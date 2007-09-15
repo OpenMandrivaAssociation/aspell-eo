@@ -29,7 +29,7 @@ Provides: spell-eo
 BuildRequires: aspell
 Requires:      aspell
 
-# Mandrake Stuff
+# Mandriva Stuff
 Requires:      locales-%{languagecode}
 Provides:      aspell-dictionary
 
