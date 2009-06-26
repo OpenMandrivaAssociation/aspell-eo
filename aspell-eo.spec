@@ -5,8 +5,8 @@
 # so we fix that with a small script in %setup section; that should
 # be removed once an accented wordlist is included
 
-%define src_ver 0.50-2
-%define fname aspell-%{languagecode}
+%define src_ver 2.1.20000225a-2
+%define fname aspell6-%{languagecode}
 %define aspell_ver 0.60
 %define languagelocal esperanto
 %define languageeng esperanto
@@ -16,12 +16,12 @@
 
 Summary:       %{languageenglazy} files for aspell
 Name:          aspell-%{languagecode}
-Version:       0.50.2
-Release:       %mkrel 10
+Version:       2.1.20000225a.2
+Release:       %mkrel 1
 Group:         System/Internationalization
 Source:        http://ftp.gnu.org/gnu/aspell/dict/%{languagecode}/%{fname}-%{src_ver}.tar.bz2
-URL:		   http://aspell.sourceforge.net/
-License:     GPL
+URL:	       http://aspell.sourceforge.net/
+License:       GPL
 BuildRoot:     %{_tmppath}/%{name}-%{version}-root
 Provides: spell-eo
 
