@@ -66,14 +66,14 @@ preunzip -c eo.cwl | sh ./fixaccents.sh | (LC_ALL=C sort) > eo.wl
 aspell  --lang=eo create master ./eo.rws < eo.wl
 
 %install
-rm -fr $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+rm -fr %{buildroot}
+make DESTDIR=%{buildroot} install
 
 # fix doc perms
 chmod 644 README
 
 %clean
-rm -fr $RPM_BUILD_ROOT
+rm -fr %{buildroot}
 
 %files
 %defattr(-,root,root)
