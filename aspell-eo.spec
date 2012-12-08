@@ -17,7 +17,7 @@
 Summary:       %{languageenglazy} files for aspell
 Name:          aspell-%{languagecode}
 Version:       2.1.20000225a.2
-Release:       %mkrel 4
+Release:       %mkrel 5
 Group:         System/Internationalization
 Source:        http://ftp.gnu.org/gnu/aspell/dict/%{languagecode}/%{fname}-%{src_ver}.tar.bz2
 URL:	       http://aspell.sourceforge.net/
@@ -66,18 +66,77 @@ preunzip -c eo.cwl | sh ./fixaccents.sh | (LC_ALL=C sort) > eo.wl
 aspell  --lang=eo create master ./eo.rws < eo.wl
 
 %install
-rm -fr %{buildroot}
-make DESTDIR=%{buildroot} install
+rm -fr $RPM_BUILD_ROOT
+make DESTDIR=$RPM_BUILD_ROOT install
 
 # fix doc perms
 chmod 644 README
 
 %clean
-rm -fr %{buildroot}
+rm -fr $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
 %doc README
 %{_libdir}/aspell-%{aspell_ver}/*
 
+
+
+
+%changelog
+* Mon May 02 2011 Oden Eriksson <oeriksson@mandriva.com> 2.1.20000225a.2-4mdv2011.0
++ Revision: 662808
+- mass rebuild
+
+* Mon Nov 29 2010 Oden Eriksson <oeriksson@mandriva.com> 2.1.20000225a.2-3mdv2011.0
++ Revision: 603203
+- rebuild
+
+* Sun Mar 14 2010 Oden Eriksson <oeriksson@mandriva.com> 2.1.20000225a.2-2mdv2010.1
++ Revision: 518917
+- rebuild
+
+* Fri Jun 26 2009 Isabel Vallejo <isabel@mandriva.org> 2.1.20000225a.2-1mdv2010.0
++ Revision: 389573
+- update to 2.1.20000225a-2
+- update to 2.1.20000225a-2
+
+* Fri Mar 06 2009 Antoine Ginies <aginies@mandriva.com> 0.50.2-10mdv2009.1
++ Revision: 350015
+- 2009.1 rebuild
+
+* Mon Jun 16 2008 Thierry Vignaud <tv@mandriva.org> 0.50.2-9mdv2009.0
++ Revision: 220372
+- rebuild
+
+* Sun Mar 09 2008 Anssi Hannula <anssi@mandriva.org> 0.50.2-8mdv2008.1
++ Revision: 182416
+- provide enchant-dictionary
+
+* Fri Jan 11 2008 Thierry Vignaud <tv@mandriva.org> 0.50.2-7mdv2008.1
++ Revision: 148751
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+- s/Mandrake/Mandriva/
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+
+* Fri Mar 16 2007 Oden Eriksson <oeriksson@mandriva.com> 0.50.2-6mdv2007.1
++ Revision: 145022
+- Import aspell-eo
+
+* Fri Mar 16 2007 Oden Eriksson <oeriksson@mandriva.com> 0.50.2-6mdv2007.1
+- use the mkrel macro
+- disable debug packages
+
+* Fri Dec 03 2004 Pablo Saratxaga <pablo@mandrakesoft.com> 0.50.2-5mdk
+- enabled real esperanto (with accents)
+
+* Fri Dec 03 2004 Thierry Vignaud <tvignaud@mandrakesoft.com> 0.50.2-4mdk
+- rebuild for new aspell
+
+* Wed Jul 28 2004 Pablo Saratxaga <pablo@mandrakesoft.com> 0.50.2-3mdk
+- allow build on ia64
 
